@@ -1,5 +1,7 @@
 package com.dipakkr.github.udacitylesson1;
 
+
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static int quantity = 1 ;
     public static String billReceipt = "Null";
-    public static  String topping = "Add WhippedCream : ";
+    public static  String topping = "";
     public static int Price = 0 ;
 
     CheckBox checkBox , checkBox2 ;
@@ -46,27 +48,23 @@ public class MainActivity extends AppCompatActivity {
         Log.v("MainActivity","HasWhippedCream : " + haswhippedcream);
         Log.v("MainActivity","HasChocolate : " + hasChocolate);
 
-        if((checkBox).isChecked()){
-            topping = "Add WhippedCream  : "+ haswhippedcream;
+        if(haswhippedcream){
+            topping +="Add WhippedCream\n";
             Price = Price + 5*quantity ;
         }
-        else
-            topping = "Add WhippedCream : " + haswhippedcream ;
 
-        if((checkBox2).isChecked()){
-            topping = "Add Chocolate : " + hasChocolate ;
+
+        if(hasChocolate){
+            topping += "Add Chocolate\n";
             Price += 10*quantity ;
-        }
-        else{
-            topping = "Add Chololate : " + hasChocolate ;
+
         }
 
-        displayQuantity(quantity);
+        //displayQuantity(quantity);
 
         billReceipt = "Name : " + nameData  +
                 "\nQuantity : "+quantity;
         billReceipt += "\n"+topping ;
-        billReceipt += "\n"+topping;
         billReceipt += "\nPay Rs.  "  + Price;
         billReceipt += "\nThanks for Visiting ";
 
@@ -99,14 +97,14 @@ public class MainActivity extends AppCompatActivity {
         priceTextView.setText(message);
     }
 
-     /*..increase quantity by 1..*/
+    /*..increase quantity by 1..*/
 
     public void  increment(View view ){
         quantity =quantity +1;
         displayQuantity(quantity);
 
     }
-       /*..decrease quantity by 1..*/
+    /*..decrease quantity by 1..*/
 
     public void  decrement(View view) {
         if (quantity > 1) {
@@ -138,5 +136,3 @@ public class MainActivity extends AppCompatActivity {
 
 
 }
-
-
